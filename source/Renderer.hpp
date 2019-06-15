@@ -15,9 +15,25 @@ public:
   {
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-      std::cout << "==> ERROR: SDL_INIT : " << SDL_GetError();
+      std::cout << "==> ERROR: SDL_INIT : " << SDL_GetError() << std::endl;
       return false;
     }
+
+    m_window = SDL_CreateWindow(
+      "Ecosystem",
+      SDL_WINDOWPOS_CENTERED,
+      SDL_WINDOWPOS_CENTERED,
+      800, 640,
+      SDL_WINDOW_SHOWN
+    );
+    if (m_window == NULL)
+    {
+      std::cout << "==> ERROR: SDL_CreateWindow : " << SDL_GetError() << std::endl;
+      Free();
+      return false;
+    }
+
+    m_surface = SDL_GetWindowSurface(m_window);
 
     return true;
   }
@@ -26,6 +42,7 @@ public:
   {
     if (m_surface != NULL)
     {
+      SDL_FreeSurface(m_surface);
       m_surface = NULL;
     }
     if (m_window != NULL)
