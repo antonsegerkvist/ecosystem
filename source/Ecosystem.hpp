@@ -1,8 +1,6 @@
 #ifndef ECOSYSTEM_HPP
 #define ECOSYSTEM_HPP
 
-#include <list>
-
 class Ecosystem
 {
 private:

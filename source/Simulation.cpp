@@ -5,14 +5,14 @@ Simulation::Simulation(unsigned int width, unsigned int height)
 , m_width(width)
 , m_quit(false)
 , m_step(0)
-, m_simulation(NULL)
+, m_ecosystem(NULL)
 {
-  m_simulation = new Simulation(width, height);
+  m_ecosystem = new Ecosystem(width, height);
 }
 
 Simulation::~Simulation()
 {
-  delete m_simulation;
+  delete m_ecosystem;
 }
 
 void Simulation::run()
@@ -32,6 +32,7 @@ void Simulation::run()
       }
     }
     ++m_step;
+    draw();
   }
 }
 

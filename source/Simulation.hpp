@@ -2,6 +2,7 @@
 #define SIMULATION_HPP
 
 #include <SDL2/SDL.h>
+#include "Ecosystem.hpp"
 
 class Simulation
 {
@@ -13,7 +14,7 @@ private:
   bool m_quit;
   unsigned int m_step;
 
-  Simulation* m_simulation;
+  Ecosystem* m_ecosystem;
 
 public:
 
