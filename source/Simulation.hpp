@@ -23,6 +23,8 @@ public:
 
   void run();
 
+  void draw();
+
 };
 
 #endif // SIMULATION_HPP

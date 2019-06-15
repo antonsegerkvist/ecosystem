@@ -11,7 +11,9 @@ Simulation::Simulation(unsigned int width, unsigned int height)
 }
 
 Simulation::~Simulation()
-{ }
+{
+  delete m_simulation;
+}
 
 void Simulation::run()
 {
@@ -33,7 +35,7 @@ void Simulation::run()
   }
 }
 
-void draw()
+void Simulation::draw()
 {
 
 }
