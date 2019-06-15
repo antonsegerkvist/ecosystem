@@ -20,17 +20,20 @@ class Entity
 {
 private:
 
+  unsigned int m_neurtalNetwork;
+
   EntityAction m_currentAction;
 
   unsigned int m_food;
-  unsigned int m_x;
-  unsigned int m_y;
 
 public:
 
-  Entity(unsigned int x, unsigned int y);
+  Entity();
 
   ~Entity();
+
+  inline unsigned int getNeuralNetwork()
+  { return m_neurtalNetwork; }
 
   inline EntityAction getCurrentAction()
   { return m_currentAction; }
@@ -38,23 +41,14 @@ public:
   inline unsigned int getFood()
   { return m_food; }
 
-  inline unsigned int getX()
-  { return m_x; }
-
-  inline unsigned int getY()
-  { return m_y; }
+  inline void setNeuralNetwork(unsigned int neuralNetwork)
+  { m_neurtalNetwork = neuralNetwork; }
 
   inline void setCurrentAction(EntityAction action)
   { m_currentAction = action; }
 
   inline void setFood(unsigned int food)
   { m_food = food; }
-
-  inline void setX(unsigned int x)
-  { m_x = x; }
-  
-  inline void setY(unsigned int y)
-  { m_y = y; }
 
 };
 
