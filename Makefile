@@ -2,8 +2,8 @@ CXX   ?= g++
 MKDIR ?= mkdir -p
 
 EXEC     ?= a.out
-CXXFLAGS ?= -I /usr/local/Cellar
-LIBS     ?= /usr/local/lib -lSDL2
+CXXFLAGS ?= -I /usr/local/Cellar/sdl2/2.0.8/include
+LIBS     ?= -L /usr/local/Cellar/sdl2/2.0.8/lib -lSDL2
 
 BUILD_DIR ?= build
 SRC_DIR   ?= source
@@ -14,8 +14,7 @@ DEPS := $(OBJS:.o=.d)
 
 .PHONY: all
 all: $(OBJS)
-	echo $(OBJS)
-	$(CXX) $(OBJS) -o $(EXEC) $(CXXFLAGS) -L $(LIBS)
+	$(CXX) $(OBJS) -o $(EXEC) $(CXXFLAGS) $(LIBS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

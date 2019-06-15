@@ -2,12 +2,14 @@
 #define RENDERER_HPP
 
 #include <iostream>
+#include <SDL2/SDL.h>
 
 class Renderer
 {
+public:
 
-  static SDL_Window* window;
-  static SDL_Surface* surface;
+  static SDL_Window* m_window;
+  static SDL_Surface* m_surface;
 
   static bool Init()
   {
@@ -18,6 +20,20 @@ class Renderer
     }
 
     return true;
+  }
+
+  static void Free()
+  {
+    if (m_surface != NULL)
+    {
+      m_surface = NULL;
+    }
+    if (m_window != NULL)
+    {
+      SDL_DestroyWindow(m_window);
+      m_window = NULL;
+    }
+    SDL_Quit();
   }
 
 };
