@@ -1,10 +1,26 @@
-CXX     ?= g++
-EXEC    ?= a.out
-INCLUDE ?= /usr/local/Cellar
-LIBS    ?= /usr/local/lib -lSDL2
+CXX   ?= g++
+MKDIR ?= mkdir -p
 
-all: ecosystem
+EXEC     ?= a.out
+CXXFLAGS ?= -I /usr/local/Cellar
+LIBS     ?= /usr/local/lib -lSDL2
 
-.PHONY: ecosystem
-ecosystem:
-	$(CXX) source/main.cpp -o $(EXEC) -I $(INCLUDE) -L $(LIBS)
+BUILD_DIR ?= build
+SRC_DIR   ?= source
+
+SRCS := $(shell find $(SRC_DIR) -name '*.cpp' | sort -k 1nr | cut -f2-)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
+DEPS := $(OBJS:.o=.d)
+
+.PHONY: all
+all: $(OBJS)
+	echo $(OBJS)
+	$(CXX) $(OBJS) -o $(EXEC) $(CXXFLAGS) -L $(LIBS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean:
+	rm -f $(EXEC)
+	rm -f $(OBJS)
