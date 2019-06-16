@@ -13,7 +13,7 @@ Simulation::Simulation(unsigned int width, unsigned int height)
 , m_ecosystem(NULL)
 {
   m_ecosystem = new Ecosystem(width, height);
-  for (int i = 0; i < (int)((m_width * m_height)/2); ++i) m_ecosystem->addFoodToRandomTile();
+  m_ecosystem->addMultipleFoodToRandomTiles((int)((m_width * m_height)/2));
 }
 
 Simulation::~Simulation()
@@ -37,7 +37,7 @@ void Simulation::run()
           break;
       }
     }
-    for (int i = 0; i < 5; ++i) m_ecosystem->addFoodToRandomTile();
+    m_ecosystem->addMultipleFoodToRandomTiles(5);
     ++m_step;
     draw();
   }

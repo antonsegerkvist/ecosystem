@@ -52,3 +52,11 @@ void Ecosystem::addFoodToRandomTile()
   const int y = (rand() % m_height);
   m_tiles[x][y]->addFood(1);
 }
+
+void Ecosystem::addMultipleFoodToRandomTiles(int count)
+{
+  for (int i = 0; i < count; ++i)
+  {
+    addFoodToRandomTile();
+  }
+}

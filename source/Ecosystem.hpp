@@ -35,6 +35,8 @@ public:
 
   void addFoodToRandomTile();
 
+  void addMultipleFoodToRandomTiles(int count);
+
 };
 
 #endif // ECOSYSTEM_HPP
