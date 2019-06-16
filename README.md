@@ -22,3 +22,11 @@ The entities can perform a set of actions. The actions are described below.
 * - Moves the entity down
 * MoveLeft
 * - Moves the entity left
+* AttackUp
+* - Attacks the tile above the entity without moving.
+* AttackRight
+* - Attacks the tile to the right of the entity without moving.
+* AttackDown
+* - Attacks the tile below the entity without moving.
+* AttackLeft
+* - Attacks the tile to the left of the entity without moving.

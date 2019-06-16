@@ -2,6 +2,7 @@
 #define ECOSYSTEM_HPP
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "Entity.hpp"
 #include "Tile.hpp"
 
@@ -31,6 +32,8 @@ public:
 
   inline const Tile* getTile(unsigned int x, unsigned int y)
   { return m_tiles[x][y]; }
+
+  void addFoodToRandomTile();
 
 };
 

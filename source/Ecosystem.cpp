@@ -27,5 +27,28 @@ Ecosystem::Ecosystem(unsigned int width, unsigned int height)
 
 Ecosystem::~Ecosystem()
 {
-  
+  for (int i = 0; i < m_width; ++i)
+  {
+    for (int j = 0; j < m_height; ++j)
+    {
+      if (m_entities[i][j] != NULL) delete m_entities[i][j];
+      delete m_tiles[i][j];
+    }
+  }
+
+  for (int i = 0; i < m_width; ++i)
+  {
+    delete m_entities[i];
+    delete m_tiles[i];
+  }
+
+  delete m_entities;
+  delete m_tiles;
+}
+
+void Ecosystem::addFoodToRandomTile()
+{
+  const int x = (rand() % m_width);
+  const int y = (rand() % m_height);
+  m_tiles[x][y]->addFood(1);
 }

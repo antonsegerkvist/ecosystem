@@ -21,7 +21,7 @@ public:
   inline void addFood(unsigned int food)
   { m_food += food; }
 
-  inline unsigned int getFood()
+  inline unsigned int getFood() const
   { return m_food; }
 
 };
