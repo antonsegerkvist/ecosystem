@@ -1,6 +1,7 @@
 #ifndef SIMULATION_HPP
 #define SIMULATION_HPP
 
+#include <math.h>
 #include <SDL2/SDL.h>
 #include "Ecosystem.hpp"
 #include "Renderer.hpp"
@@ -9,8 +10,7 @@ class Simulation
 {
 private:
 
-  static const int s_tileWidth;
-  static const int s_tileHeight;
+  static const int s_tileSize;
 
   unsigned int m_width;
   unsigned int m_height;

@@ -1,7 +1,6 @@
 #include "Simulation.hpp"
 
-const int Simulation::s_tileWidth = 16;
-const int Simulation::s_tileHeight = 16;
+const int Simulation::s_tileSize = 16;
 
 Simulation::Simulation(unsigned int width, unsigned int height)
 : m_height(height)
@@ -37,7 +36,7 @@ void Simulation::run()
           break;
       }
     }
-    m_ecosystem->addMultipleFoodToRandomTiles(5);
+    m_ecosystem->addMultipleFoodToRandomTiles(100);
     ++m_step;
     draw();
   }
@@ -52,12 +51,13 @@ void Simulation::draw()
     {
       if (m_ecosystem->getTile(i, j)->getFood() > 0)
       {
+        const int padding = (s_tileSize >> 1) - (int)fmin(m_ecosystem->getTile(i, j)->getFood(), s_tileSize >> 1);
         Renderer::DrawRect(
           0xFF, 0xFF, 0,
-          i * s_tileWidth + 3 - m_viewX,
-          j * s_tileHeight + 3 - m_viewY,
-          s_tileWidth - 3,
-          s_tileHeight - 3
+          i * s_tileSize + padding - m_viewX,
+          j * s_tileSize + padding - m_viewY,
+          s_tileSize - 2 * padding,
+          s_tileSize - 2 * padding
         );
       }
     }
